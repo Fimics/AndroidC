@@ -1,0 +1,17 @@
+target=main
+object=main.o fun1.o fun2.o sum.o
+CC=gcc #gcc 可以把.c变变成.o
+CPPFLAGS=-I./ #预处理选项
+
+$(target):$(object) #自定义变量使用
+	$(CC) -o $@ $^
+
+%.o:%.c
+	$(CC) -o $@ -c $< $(CPPFLAGS)
+
+#	变量:
+ #		自定义变量: var = hello, $(var)
+ #		自带变量: CC CPPFLAGS CFLAGS LDFLAGS
+ #		自动变量: $@ $< $^
+ #	模式规则:
+ #		%.o:%.c------> 前后的%必须是相同

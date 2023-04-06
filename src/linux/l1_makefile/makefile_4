@@ -1,0 +1,13 @@
+src=$(wildcard ./*.c) #函数wildcard 查找指定目录的指定文件
+object=$(patsubst %.c, %.o, $(src)) #把src变量里所有后缀为.c的文件替换成.o   obj=a.o,b.o c.o
+target=main
+CC=gcc
+CPPFLAGS=-I./
+
+$(target):$(object)
+	$(CC) -o $@ $^
+
+%.o:%.c
+	$(CC) -o $@ -c $< $(CPPFLAGS)
+
+#1.5makefile的清理操作用途:清除编译生成的中间

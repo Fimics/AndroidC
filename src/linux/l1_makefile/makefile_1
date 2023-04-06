@@ -1,0 +1,4 @@
+main_1:main.c fun1.c fun2.c sum.c
+	gcc -o main_1 main.c fun1.c fun2.c sum.c -I./
+
+#改一个文件得重新编译所有文件，所以有第二个版本
